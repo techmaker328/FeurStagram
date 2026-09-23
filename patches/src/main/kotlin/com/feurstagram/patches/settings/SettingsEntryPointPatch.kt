@@ -11,7 +11,7 @@ import com.android.tools.smali.dexlib2.iface.reference.FieldReference
 import com.feurstagram.patches.shared.Constants.COMPATIBILITY_INSTAGRAM
 import com.feurstagram.patches.shared.Constants.EXTENSION
 
-private const val SETTINGS_CLASS = "Lcom/feurstagram/extension/Settings;"
+private const val STRICT_MODE_CLASS = "Lcom/feurstagram/extension/Settings;"
 
 private fun fieldType(instruction: Any?): String? =
     ((instruction as? ReferenceInstruction)?.reference as? FieldReference)?.type
@@ -65,7 +65,7 @@ val settingsEntryPointPatch = bytecodePatch(
             addInstructions(
                 tabBarStore.location.index + 1,
                 "invoke-static { v$tabBarRegister }, " +
-                    "$SETTINGS_CLASS->installHomeTabWatcher(Landroid/view/ViewGroup;)V",
+                    "$STRICT_MODE_CLASS->installStrictMode(Landroid/view/ViewGroup;)V",
             )
         }
     }
