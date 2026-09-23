@@ -108,15 +108,14 @@ public final class Settings {
      */
     public static void installHomeTabWatcher(ViewGroup tabBar) {
         if (tabBar == null) return;
-        tabBar.getViewTreeObserver().addOnGlobalLayoutListener(new HomeTabWatcher(tabBar));
+
+         // Strict build: install content hiders only.
+        // Do not install HomeTabWatcher, settings, or onboarding.
         Hiders.installAll(tabBar);
+
         Context activity = getActivityContext(tabBar);
-        // The follow card comes first after an install or update; "What's new"
-        // waits until it is dismissed.
-        FollowPrompt.maybeShow(activity, () -> UpdateChecker.checkWhatsNew(activity));
         UpdateChecker.check(activity);
     }
-
     /** Unwrap a view's context down to the hosting Activity when possible. */
     public static Context getActivityContext(View view) {
         if (view == null) return null;
