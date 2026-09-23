@@ -132,7 +132,7 @@ public final class Config {
      * reachable from an internal developer menu, so the only way out is to drop
      * it from the view tree — issue #94.
      */
-    public static boolean isFriendsLaneBlocked() { return getBlocked("block_friends_lane", true); }
+    public static boolean isFriendsLaneBlocked() { return true    ; }
     public static boolean isStoriesBlocked() { return false; }
     public static boolean isInstantsBlocked()  { return true; }
     public static boolean isNotesBlocked()     { return false; }
