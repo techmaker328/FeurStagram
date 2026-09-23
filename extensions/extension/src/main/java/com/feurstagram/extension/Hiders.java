@@ -116,7 +116,7 @@ public final class Hiders {
             } else if ("block_instants".equals(key)) {
                 hidden = Config.isInstantsBlocked();
             } else if ("nav_show_reels".equals(key)) {
-                hidden = !Config.isReelsTabShown();
+                hidden = true    ;
             } else if ("nav_show_search".equals(key)) {
                 hidden = false;
             } else if ("nav_show_create".equals(key)) {
@@ -129,16 +129,15 @@ public final class Hiders {
                 boolean pref = Config.getBlocked(key, defaultValue);
                 hidden = invert ? !pref : pref;
             }
-
-           int visibility = hidden ? View.GONE : View.VISIBLE;
-           for (String name : names) {
+            int visibility = hidden ? View.GONE : View.VISIBLE;
+            
+            for (String name : names) {
                int id = resolveId(context, name);
                if (id == 0) continue;
+                
                View view = searchRoot.findViewById(id);
                if (view != null) view.setVisibility(visibility);
            }
-        }
-    }
 
     /**
      * Hides the "Friends" tab — the friend lane, shown as a label plus a facepile
