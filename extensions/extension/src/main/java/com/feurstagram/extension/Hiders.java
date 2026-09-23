@@ -109,15 +109,34 @@ public final class Hiders {
                 if (scopeView == null) return; // container not on this screen; leave everything alone
                 searchRoot = scopeView;
             }
-            boolean pref = Config.getBlocked(key, defaultValue);
-            boolean hidden = invert ? !pref : pref; // invert: pref true = shown
-            int visibility = hidden ? View.GONE : View.VISIBLE;
-            for (String name : names) {
-                int id = resolveId(context, name);
-                if (id == 0) continue;
-                View view = searchRoot.findViewById(id);
-                if (view != null) view.setVisibility(visibility);
+            boolean hidden;
+
+            if ("block_notes".equals(key)) {
+                hidden = Config.isNotesBlocked();
+            } else if ("block_instants".equals(key)) {
+                hidden = Config.isInstantsBlocked();
+            } else if ("nav_show_reels".equals(key)) {
+                hidden = !Config.isReelsTabShown();
+            } else if ("nav_show_search".equals(key)) {
+                hidden = !Config.isNavTabShown("nav_show_search");
+            } else if ("nav_show_create".equals(key)) {
+                hidden = !Config.isNavTabShown("nav_show_create");
+            } else if ("nav_show_direct".equals(key)) {
+                hidden = !Config.isNavTabShown("nav_show_direct");
+            } else if ("nav_show_profile".equals(key)) {
+                hidden = !Config.isNavTabShown("nav_show_profile");
+            } else {
+                boolean pref = Config.getBlocked(key, defaultValue);
+                hidden = invert ? !pref : pref;
             }
+
+           int visibility = hidden ? View.GONE : View.VISIBLE;
+           for (String name : names) {
+               int id = resolveId(context, name);
+               if (id == 0) continue;
+               View view = searchRoot.findViewById(id);
+               if (view != null) view.setVisibility(visibility);
+           }
         }
     }
 
