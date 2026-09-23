@@ -119,7 +119,6 @@ public final class Block {
                 || path.contains("/async_ads_privacy/")
                 || path.contains("/async_critical_notices/")
                 || isMediaSeen(path)
-                || path.contains("/api/v1/fbupload/")
                 || path.contains("/api/v1/stats/")
                 || path.contains("/api/v1/commerce/")
                 || path.contains("/api/v1/shopping/")
