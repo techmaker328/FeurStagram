@@ -120,13 +120,11 @@ public final class Config {
      * "Following" feed) instead of the recommended feed. Off by default. Not a
      * block_* surface, so the permanent lock never freezes it.
      */
-    public static boolean isFollowingFeedOnly() {
-        return getBlocked("limit_following_feed", false);
-    }
+    public static boolean isFollowingFeedOnly() { return true; }
 
-    public static boolean isFeedBlocked()      { return getBlocked("block_feed", true); }
-    public static boolean isExploreBlocked()   { return getBlocked("block_explore", true); }
-    public static boolean isReelsBlocked()     { return getBlocked("block_reels", true); }
+    public static boolean isFeedBlocked()      { return false; }
+    public static boolean isExploreBlocked()   { return true; }
+    public static boolean isReelsBlocked()     { return true; }
     /**
      * Whether the "Friends" tab and its avatar facepile are hidden from the Reels
      * viewer's header. On by default: Instagram gates that entry point behind a
@@ -135,11 +133,11 @@ public final class Config {
      * it from the view tree — issue #94.
      */
     public static boolean isFriendsLaneBlocked() { return getBlocked("block_friends_lane", true); }
-    public static boolean isStoriesBlocked()   { return getBlocked("block_stories", false); }
-    public static boolean isInstantsBlocked()  { return getBlocked("block_instants", true); }
-    public static boolean isNotesBlocked()     { return getBlocked("block_notes", true); }
-    public static boolean isSuggestedBlocked() { return getBlocked("block_suggested", true); }
-    public static boolean isAdsBlocked()       { return getBlocked("block_ads", true); }
+    public static boolean isStoriesBlocked() { return false; }
+    public static boolean isInstantsBlocked()  { return true; }
+    public static boolean isNotesBlocked()     { return false; }
+    public static boolean isSuggestedBlocked() { return true; }
+    public static boolean isAdsBlocked()       { return true; }
 
     /**
      * Whether the notifications ("heart") button in the feed header is hidden.
