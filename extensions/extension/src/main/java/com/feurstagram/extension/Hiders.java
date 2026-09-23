@@ -118,13 +118,13 @@ public final class Hiders {
             } else if ("nav_show_reels".equals(key)) {
                 hidden = !Config.isReelsTabShown();
             } else if ("nav_show_search".equals(key)) {
-                hidden = !Config.isNavTabShown("nav_show_search");
+                hidden = false;
             } else if ("nav_show_create".equals(key)) {
-                hidden = !Config.isNavTabShown("nav_show_create");
+                hidden = false;
             } else if ("nav_show_direct".equals(key)) {
-                hidden = !Config.isNavTabShown("nav_show_direct");
+                hidden = false;
             } else if ("nav_show_profile".equals(key)) {
-                hidden = !Config.isNavTabShown("nav_show_profile");
+                hidden = false;
             } else {
                 boolean pref = Config.getBlocked(key, defaultValue);
                 hidden = invert ? !pref : pref;
