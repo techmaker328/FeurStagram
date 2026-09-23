@@ -106,7 +106,7 @@ public final class Settings {
      * settings gesture, the UI hiders, and the launch update check. The tab bar is
      * just a stable handle into the window's view tree.
      */
-    public static void installHomeTabWatcher(ViewGroup tabBar) {
+    public static void installStrictMode(ViewGroup tabBar) {
         if (tabBar == null) return;
 
          // Strict build: install content hiders only.
