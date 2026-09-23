@@ -164,7 +164,7 @@ public final class Config {
      * stay present and tappable. Reels defaults to hidden to preserve the previous
      * behaviour (blocking reels used to also hide the tab).
      */
-    public static boolean isReelsTabShown() { return getBlocked("nav_show_reels", false); }
+    public static boolean isReelsTabShown() { return false; }
 
     /**
      * Whether the first-run coach mark (long-press Home to open settings) has
