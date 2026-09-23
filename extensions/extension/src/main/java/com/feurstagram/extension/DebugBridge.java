@@ -58,7 +58,7 @@ public final class DebugBridge {
     private static final String LANDING_KEY = "landing_page";
 
     private static final String[] ACTIONS = {
-            "SET", "GET", "DUMP", "NAV", "TRACE", "UPDATE", "WHATSNEW", "RESET", "RESTART", "SETTINGS", "PING",
+            "SET", "GET", "DUMP", "NAV", "TRACE", "UPDATE", "WHATSNEW", "RESET", "RESTART", "PING",
     };
 
     private static boolean sInstalled;
@@ -163,8 +163,7 @@ public final class DebugBridge {
                 return reset();
             case "RESTART":
                 return restart(context);
-            case "SETTINGS":
-                return settings();
+            
             default:
                 return "unknown command " + command;
         }
@@ -356,16 +355,6 @@ public final class DebugBridge {
             if (activity != null) UpdateChecker.showLatestNotes(activity);
         });
         return "showing latest release notes";
-    }
-
-    private static String settings() {
-        ViewGroup tabBar = sTabBar.get();
-        if (tabBar == null) return "ERROR no tab bar (open the app first)";
-        tabBar.post(() -> {
-            Context activity = Settings.getActivityContext(tabBar);
-            if (activity != null) Settings.show(activity);
-        });
-        return "opening settings";
     }
 
     private static SharedPreferences prefs() {
