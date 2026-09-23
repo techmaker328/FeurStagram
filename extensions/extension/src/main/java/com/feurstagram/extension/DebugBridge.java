@@ -58,7 +58,7 @@ public final class DebugBridge {
     private static final String LANDING_KEY = "landing_page";
 
     private static final String[] ACTIONS = {
-            "SET", "GET", "DUMP", "NAV", "TRACE", "UPDATE", "WHATSNEW", "RESET", "RESTART", "PING",
+            "SET", "GET", "DUMP", "NAV", "TRACE", "UPDATE", "WHATSNEW", "RESTART", "PING",
     };
 
     private static boolean sInstalled;
@@ -159,8 +159,7 @@ public final class DebugBridge {
             case "TRACE":
                 sNetworkTrace = intent.getBooleanExtra("value", !sNetworkTrace);
                 return "network trace " + (sNetworkTrace ? "on (logcat -s FeurNet:I)" : "off");
-            case "RESET":
-                return reset();
+            
             case "RESTART":
                 return restart(context);
             
@@ -309,14 +308,7 @@ public final class DebugBridge {
      * Wipe every stored preference, permanent lock included, so a lock-related
      * test can be run again without reinstalling the app.
      */
-    private static String reset() {
-        SharedPreferences prefs = prefs();
-        if (prefs == null) return "ERROR no context";
-        int count = prefs.getAll().size();
-        prefs.edit().clear().apply();
-        Config.setNeedsRestart();
-        return "cleared " + count + " preferences";
-    }
+    
 
     private static String restart(Context context) {
         ViewGroup tabBar = sTabBar.get();
